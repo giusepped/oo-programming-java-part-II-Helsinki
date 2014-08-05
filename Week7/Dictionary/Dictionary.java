@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
-
+import java.util.List;
 /**
  *
  * @author giuseppedesantis
@@ -28,8 +28,8 @@ public class Dictionary {
         return this.dictionary.size();
     }
     
-    public ArrayList<String> translationList(){
-        ArrayList<String> translationList = new ArrayList<String>();
+    public List<String> translationList(){
+        List<String> translationList = new ArrayList<String>();
         for(String key : this.dictionary.keySet()){
             String translation = key + " = " + this.translate(key);
             translationList.add(translation);
@@ -38,4 +38,3 @@ public class Dictionary {
     }
     
 }
-
