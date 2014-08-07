@@ -12,4 +12,9 @@ public class Plane {
       this.id = id;
       this.capacity = capacity;
     }
+    
+    public String toString(){
+        return this.id + " (" + this.capacity + ")";
+    }
 }
+
