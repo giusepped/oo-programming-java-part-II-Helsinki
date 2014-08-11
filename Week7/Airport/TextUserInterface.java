@@ -13,12 +13,6 @@ public class TextUserInterface {
         this.flightDatabase = flightDatabase;
     }
     
-    public void AirportPanel(){
-        System.out.println("Airport panel");
-        System.out.println("--------------------");
-        System.out.println();
-    }
-    
     public void start(){
         System.out.println("Airport panel");
         System.out.println("--------------------");
