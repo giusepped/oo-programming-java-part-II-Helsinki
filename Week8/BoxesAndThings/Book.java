@@ -20,7 +20,7 @@ public class Book implements ToBeStored{
     }
     
     @Override
-    public void toString(){
+    public String toString(){
         return this.writer + ": " + this.name;
     }
     
