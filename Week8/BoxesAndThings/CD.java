@@ -22,7 +22,7 @@ public class CD implements ToBeStored{
     }
     
     @Override
-    public void toString(){
+    public String toString(){
         return this.artist + ": " + this.title + " (" + this.publishingYear + ")";
     }
 }
