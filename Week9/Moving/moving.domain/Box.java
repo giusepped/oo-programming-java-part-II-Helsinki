@@ -1,37 +1,38 @@
 
 package moving.domain;
 
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  *
  * @author giuseppedesantis
  */
-public class Item implements Thing, Comparable<Item>{
-    private String name;
-    private int volume;
+public class Box implements Thing{
+    private int maximumCapacity;
+    private List<Thing> things;
     
-    public Item(String name, int volume){
-        this.name = name;
-        this.volume = volume;
+    public Box(int maximumCapacity){
+        this.maximumCapacity = maximumCapacity;
+        this.things = new ArrayList<Thing>();
     }
     
-    public String getName(){
-        return this.name;
+    public boolean addThing(Thing thing){
+        if((thing.getVolume() + this.getVolume()) <= this.maximumCapacity){
+            this.things.add(thing);
+            return true;
+        }
+        return false;
     }
     
     @Override
     public int getVolume(){
-        return this.volume;
+        int volume = 0;
+        for(Thing t : this.things){
+            volume = volume + t.getVolume();
+        }
+        return volume;
     }
-    
-    @Override
-    public int compareTo(Item otherItem){
-        return this.volume - otherItem.volume;
-    }
-    
-    @Override
-    public String toString(){
-        return this.name + " (" + this.volume + " dm^3)";
-    }
-    
     
 }
+
