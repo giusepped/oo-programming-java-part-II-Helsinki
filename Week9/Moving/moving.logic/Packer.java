@@ -21,8 +21,18 @@ public class Packer {
     }
     
     public List<Box> packThings(List<Thing> things){
-        
-        
+        if(things.isEmpty() == false){
+            this.boxes.add(box);
+            for(Thing t : things){
+                if(this.box.addThing(t) == true){
+                    
+                }else{
+                    Box newBox = new Box(this.box);
+                    newBox.addThing(t);
+                    this.boxes.add(newBox);
+                }
+            }
+        }
         return this.boxes;
     }
 }
