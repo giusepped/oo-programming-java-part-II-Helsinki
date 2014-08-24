@@ -16,6 +16,33 @@ public class Bird {
     public String toString() {
         return this.latinName + " (" + this.ringingYear + ")";
     }
+    
+    @Override
+    public boolean equals(Object object){
+        if(object == null){
+            return false;
+        }
+        if(this.getClass() != object.getClass()){
+            return false;
+        }
+        Bird compared = (Bird) object;
+        if(this.latinName == null || !this.latinName.equals(compared.latinName)){
+            return false;
+        }
+        if(this.ringingYear != compared.ringingYear){
+            return false;
+        }
+        return true;
+    }
+    
+    @Override
+    public int hashCode(){
+        if(this.latinName == null){
+            return 7;
+        }
+        
+        return this.ringingYear + this.latinName.hashCode();
+    }
 }
 
 
