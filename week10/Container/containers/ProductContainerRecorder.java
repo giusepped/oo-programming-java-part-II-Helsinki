@@ -5,37 +5,40 @@ package containers;
  *
  * @author giuseppedesantis
  */
-public class ProductContainerRecorder extends ContainerHistory{
-    private ProductContainer productContainer;
+public class ProductContainerRecorder extends ProductContainer{
+    private ContainerHistory containerHistory;
     
     public ProductContainerRecorder(String productName, double capacity, double initialVolume) {
-        this.productContainer = new ProductContainer(productName, capacity);
-        this.productContainer.addToTheContainer(initialVolume);
-        super.add(initialVolume);
+        super(productName, capacity);
+        super.addToTheContainer(initialVolume);
+        containerHistory = new ContainerHistory();
+        containerHistory.add(initialVolume);
     }
     
     public String history(){
-        return super.toString();
+        return containerHistory.toString();
     }
     
+    @Override
     public void addToTheContainer(double amount){
-        this.productContainer.addToTheContainer(amount);
-        super.add(this.productContainer.getVolume());
+        super.addToTheContainer(amount);
+        containerHistory.add(super.getVolume());
     }
     
-    public void takeFromTheContainer(double amount){
-        this.productContainer.takeFromTheContainer(amount);
-        super.add(this.productContainer.getVolume());
+    @Override
+    public double takeFromTheContainer(double amount){
+        containerHistory.add(super.getVolume() - amount);
+        return super.takeFromTheContainer(amount);
     }
     
     public void printAnalysis(){
-        System.out.println("Product: " + this.productContainer.getName());
+        System.out.println("Product: " + super.getName());
         System.out.println("History: " + this.history());
-        System.out.println("Greatest product amount: " + super.maxValue());
-        System.out.println("Smallest product amount: " + super.minValue());
-        System.out.println("Average: " + super.average());
-        System.out.println("Greatest change: " + super.greatestFluctuation());
-        System.out.println("Variance: " + super.variance());
+        System.out.println("Greatest product amount: " + containerHistory.maxValue());
+        System.out.println("Smallest product amount: " + containerHistory.minValue());
+        System.out.println("Average: " + containerHistory.average());
+        System.out.println("Greatest change: " + containerHistory.greatestFluctuation());
+        System.out.println("Variance: " + containerHistory.variance());
     }
     
 }
