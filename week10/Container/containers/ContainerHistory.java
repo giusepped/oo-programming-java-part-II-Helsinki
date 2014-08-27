@@ -73,7 +73,7 @@ public class ContainerHistory {
         if(values.isEmpty() || values.size() == 1){
             return greatestFluctuation;
         }else{
-            for(int i = values.size(); i >= 1; i--){
+            for(int i = values.size() - 1; i >= 1; i--){
                 double fluctuation = Math.abs(values.get(i) - values.get(i-1));
                 fluctuations.add(fluctuation);
             }
@@ -87,15 +87,15 @@ public class ContainerHistory {
     }
     
     public double variance(){
-        double variance = 0;
+        double varianceSum = 0;
         if(values.isEmpty() || values.size() == 1){
-            return variance;
+            return varianceSum;
         }else{
             for(double v : values){
-                variance =+ (v - this.average())*(v - this.average());
+                varianceSum += (v - this.average())*(v - this.average());
             }
-            variance = variance/(values.size() - 1);
         }
+        double variance = varianceSum/(values.size() - 1);
         return variance;
     }
 }
