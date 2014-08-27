@@ -35,7 +35,7 @@ public class ProductContainerRecorder extends ContainerHistory{
         System.out.println("Smallest product amount: " + super.minValue());
         System.out.println("Average: " + super.average());
         System.out.println("Greatest change: " + super.greatestFluctuation());
-        System.out.pritnln("Variance: " + super.variance());
+        System.out.println("Variance: " + super.variance());
     }
     
 }
