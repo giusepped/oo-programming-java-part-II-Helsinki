@@ -68,11 +68,20 @@ public class ContainerHistory {
     }
     
     public double greatestFluctuation(){
+        List<Double> fluctuations = new ArrayList<Double>();
         double greatestFluctuation = 0;
         if(values.isEmpty() || values.size() == 1){
             return greatestFluctuation;
         }else{
-            
+            for(int i = values.size; i >= 1; i--){
+                double fluctuation = Math.abs(values.get(i) - values.get(i-1));
+                fluctuations.add(fluctuation);
+            }
+        }
+        for(double f : fluctuations){
+            if(greatestFluctuation < f){
+                greatestFluctuation = f;
+            }
         }
         return greatestFluctuation;
     }
