@@ -73,7 +73,7 @@ public class ContainerHistory {
         if(values.isEmpty() || values.size() == 1){
             return greatestFluctuation;
         }else{
-            for(int i = values.size; i >= 1; i--){
+            for(int i = values.size(); i >= 1; i--){
                 double fluctuation = Math.abs(values.get(i) - values.get(i-1));
                 fluctuations.add(fluctuation);
             }
