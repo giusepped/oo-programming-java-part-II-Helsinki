@@ -1,4 +1,6 @@
 
+package farmsimulator;
+
 /**
  *
  * @author giuseppedesantis
