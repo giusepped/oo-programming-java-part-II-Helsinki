@@ -7,4 +7,10 @@ package farmsimulator;
  */
 public class MilkingRobot {
     
+    
+    public MilkingRobot(){
+        
+    }
+    
+    
 }
