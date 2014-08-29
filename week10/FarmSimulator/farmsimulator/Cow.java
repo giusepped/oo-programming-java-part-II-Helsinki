@@ -12,7 +12,7 @@ public class Cow implements milkable, alive{
     private String name;
     private int udder;
     private double amountOfMilk;
-    private Random random = new Random();
+    private Random rand = new Random();
     private static final String[] NAMES = new String[]{
         "Anu", "Arpa", "Essi", "Heluna", "Hely",
         "Hento", "Hilke", "Hilsu", "Hymy", "Ihq", "Ilme", "Ilo",
@@ -22,12 +22,14 @@ public class Cow implements milkable, alive{
         "Rima", "Soma", "Sylkki", "Valpu", "Virpi"};
     
     public Cow(){
-        this.udder = 15 + random.nextInt(40 - 15 + 1);
+        this.udder = 15 + rand.nextInt(40 - 15 + 1);
+        int nameIndex = rand.nextInt(NAMES.size());
+        this.name = NAMES[nameIndex];
     }
     
     public Cow(String name){
         this.name = name;
-        this.udder = 15 + random.nextInt(40 - 15 + 1);
+        this.udder = 15 + rand.nextInt(40 - 15 + 1);
     }
     
     public String getName(){
@@ -39,7 +41,7 @@ public class Cow implements milkable, alive{
     }
     
     public double getAmount(){
-        
+        return this.amountOfMilk;
     }
     
     @Override
@@ -55,7 +57,7 @@ public class Cow implements milkable, alive{
     
     @Override
     public void liveHour(){
-        double milkProduced = 0.7 + (2 - 0.7) * random.nextDouble();
+        double milkProduced = 0.7 + (2 - 0.7) * rand.nextDouble();
         this.amountOfMilk += milkProduced;
     }
 }
