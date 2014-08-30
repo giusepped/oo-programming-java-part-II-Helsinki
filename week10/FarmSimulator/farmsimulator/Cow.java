@@ -6,9 +6,9 @@ package farmsimulator;
  * @author giuseppedesantis
  */
  
- import java.util.random;
+ import java.util.Random;
  
-public class Cow implements milkable, alive{
+public class Cow implements Milkable, Alive{
     private String name;
     private int udder;
     private double amountOfMilk;
@@ -23,7 +23,7 @@ public class Cow implements milkable, alive{
     
     public Cow(){
         this.udder = 15 + rand.nextInt(40 - 15 + 1);
-        int nameIndex = rand.nextInt(NAMES.size());
+        int nameIndex = rand.nextInt(NAMES.length);
         this.name = NAMES[nameIndex];
     }
     
@@ -37,7 +37,7 @@ public class Cow implements milkable, alive{
     }
     
     public double getCapacity(){
-        return this.capacity;
+        return this.udder;
     }
     
     public double getAmount(){
@@ -45,8 +45,8 @@ public class Cow implements milkable, alive{
     }
     
     @Override
-    public String toSting(){
-        return this.name + " " + this.amountOfMilk + "/" + this.capacity;
+    public String toString(){
+        return this.name + " " + this.amountOfMilk + "/" + this.udder;
     }
     
     @Override
@@ -57,7 +57,7 @@ public class Cow implements milkable, alive{
     
     @Override
     public void liveHour(){
-        double milkProduced = 0.7 + (2 - 0.7) * rand.nextDouble();
+        double milkProduced = Math.ceil(0.7 + (2 - 0.7) * rand.nextDouble());
         this.amountOfMilk += milkProduced;
     }
 }
