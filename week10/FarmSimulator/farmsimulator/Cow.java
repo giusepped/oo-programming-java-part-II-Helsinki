@@ -59,6 +59,8 @@ public class Cow implements Milkable, Alive{
     @Override
     public void liveHour(){
         double milkProduced = Math.ceil(0.7 + (2 - 0.7) * rand.nextDouble());
-        this.amountOfMilk += milkProduced;
+        if(this.amountOfMilk + milkProduced <= this.udder){
+            this.amountOfMilk += milkProduced;
+        }
     }
 }
