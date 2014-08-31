@@ -39,12 +39,13 @@ public class BulkTank {
         }
     }
     
-    public double takeFromTank(double amount){
+    public double getFromTank(double amount){
         if(amount >= this.volume){
             this.volume = 0;
             return this.volume;
         }else{
-            return this.volume - amount;
+            this.volume -= amount;
+            return this.volume;
         }
     }
     
