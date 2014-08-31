@@ -28,7 +28,7 @@ public class MilkingRobot {
         if(this.getBulkTank() == null){
             throw new IllegalStateException("The MilkingRobot hasn't been installed");
         }else{
-            
+            this.bulkTank.addToTank(milkable.milk());
         }
     }
 }
