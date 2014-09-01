@@ -26,8 +26,27 @@ public class Thing {
     }
     
     @Override
-    public boolean equals(){
+    public boolean equals(Object object){
+        if(object == null){
+            return false;
+        }
+        if(this.getClass() != object.getClass()){
+            return false;
+        }
+        Thing compared = (Thing) object;
+        if(this.name == null || !this.name.equals(compared.name)){
+            return false;
+        }
+        return true;
+    }
+    
+    @Override
+    public int hashCode(){
+        if(this.name == null){
+            return 7;
+        }
         
+        return this.name.hashCode();
     }
 
 }
