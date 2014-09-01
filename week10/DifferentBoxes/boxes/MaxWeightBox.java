@@ -6,6 +6,8 @@ Public class MaxWeightBox extends Box{
   private int maxWeight;
   private int currentWeight;
   
-  public MaxWeightBox(){
+  public MaxWeightBox(int maxWeight){
   }
+  
+  
 }
