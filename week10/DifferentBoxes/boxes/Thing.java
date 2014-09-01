@@ -6,7 +6,9 @@ public class Thing {
     private int weight;
 
     public Thing(String name, int weight) {
-
+        if(weight < 0){
+            throw new IllegalArgumentException("The weight cannot be negative");
+        }
         this.name = name;
         this.weight = weight;
     }
@@ -21,6 +23,11 @@ public class Thing {
 
     public int getWeight() {
         return weight;
+    }
+    
+    @Override
+    public boolean equals(){
+        
     }
 
 }
