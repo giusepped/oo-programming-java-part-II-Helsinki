@@ -29,7 +29,7 @@ public abstract class Character {
     public void move(ArrayList<String> moves){
     }
     
-    public void move(int moves){   
+    public void move(int moves, boolean vampireMoves){ 
     }
     
     public int getX(){
@@ -48,9 +48,6 @@ public abstract class Character {
     @Override
     public boolean equals(Object object){
         if(object == null){
-            return false;
-        }
-        if(object.getClass() != this.getClass()){
             return false;
         }
         Character compared = (Character) object;
