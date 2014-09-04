@@ -19,17 +19,17 @@ public class Vampire extends Character{
     }
     
     @Override
-    public void move(int moves){
-        for(int i = 0; i < moves; i++){
-            while(x < this.length && y < this.length){
+    public void move(int moves, boolean vampireMoves){
+        if(vampireMoves == true){
+            for(int i = 0; i < moves; i++){
                 int random = rand.nextInt(4);
-                if(random == 0){
+                if(random == 0 && x + 1 < length && x + 1 >= 0){
                     x += 1;
-                }else if(random == 1){
+                }else if(random == 1 && x - 1 < length && x - 1 >= 0){
                     x -= 1;
-                }else if(random == 2){
+                }else if(random == 2 && y + 1 < heigth && y + 1 >= 0){
                     y += 1;
-                }else if(random == 3){
+                }else if(random == 3 && y - 1 < heigth && y - 1 >= 0){
                     y -= 1;
                 }
             }
