@@ -15,7 +15,7 @@ public class Characters {
         characters = new ArrayList<Character>();
         Player player = new Player("@", length, heigth);
         characters.add(player);
-        for(int i = 0; i < vampires; i++){
+        while(characters.size() <= vampires){
             Vampire v = new Vampire("v", length, heigth);
             if(!characters.contains(v)){
                 characters.add(v);
@@ -31,5 +31,32 @@ public class Characters {
     
     public ArrayList<Character> returnCharacters(){
         return characters;
+    }
+    
+    public void moveAndRemoveCharacters(ArrayList<String> moves, boolean vampiresMove){
+        ArrayList<Character> vampiresMoved = new ArrayList<Character>();
+        Character player = new Player("", 0, 0);
+        for(Character c : characters){
+            if(c.getName().equals("@")){
+                c.move(moves);
+                player = c;
+            }else{
+                c.move(moves.size(), vampiresMove);
+                if(!vampiresMoved.contains(c)){
+                    vampiresMoved.add(c);
+                }
+                
+            }
+        }
+        ArrayList<Character> toBeRemoved = new ArrayList<Character>();
+        for(Character vamp : vampiresMoved){
+            if(vamp.equals(player)){
+                toBeRemoved.add(vamp);
+            }
+        }
+        vampiresMoved.removeAll(toBeRemoved);
+        characters.clear();
+        characters.add(player);
+        characters.addAll(vampiresMoved);
     }
 }
