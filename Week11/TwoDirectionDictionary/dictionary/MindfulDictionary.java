@@ -19,6 +19,7 @@ public class MindfulDictionary {
     private HashMap<String, String> dictionaryFromLangB;
     private Scanner reader;
     private FileWriter writer;
+    private File file;
     
     public MindfulDictionary(){
         this.dictionaryFromLangA = new HashMap<String, String>();
@@ -28,9 +29,9 @@ public class MindfulDictionary {
     public MindfulDictionary(String file) throws FileNotFoundException, IOException{
         this.dictionaryFromLangA = new HashMap<String, String>();
         this.dictionaryFromLangB = new HashMap<String, String>();
-        File fileToRead = new File(file);
+        this.file = new File(file);
         try{
-            this.reader = new Scanner(fileToRead);
+            this.reader = new Scanner(this.file);
         }
         catch (FileNotFoundException e){
             System.out.println("file not found");
@@ -51,15 +52,17 @@ public class MindfulDictionary {
         }
     }
     
-    public boolean save() throws IOException{
-        if(this.dictionaryFromLangA.isEmpty()){
+    public boolean save(){
+        try{
+            this.writer = new FileWriter(this.file);
+            for(String a : this.dictionaryFromLangA.keySet()){
+                String line = a + ":" + this.dictionaryFromLangA.get(a) + "\n";
+                this.writer.write(line);
+            }
+            this.writer.close();
+        }catch (IOException e){
             return false;
         }
-        for(String a : this.dictionaryFromLangA.keySet()){
-            String line = a + ":" +getKeyByValue(this.dictionaryFromLangA, a);
-            this.writer.write(line);
-        }
-        this.writer.close();
         return true;
     }
     
@@ -87,7 +90,7 @@ public class MindfulDictionary {
             this.dictionaryFromLangB.remove(key);
         }else if(this.dictionaryFromLangB.containsKey(word)){
             this.dictionaryFromLangB.remove(word);
-            String key = getKeyByValue(this.dictionaryFromLangB, word);
+            String key = getKeyByValue(this.dictionaryFromLangA, word);
             this.dictionaryFromLangA.remove(key);
         }
     }
