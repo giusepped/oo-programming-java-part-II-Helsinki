@@ -45,6 +45,6 @@ public class GraphicCalculator implements Runnable {
     }
 
     public JFrame getFrame() {
-        return frame;
+        return fram;
     }
 }
