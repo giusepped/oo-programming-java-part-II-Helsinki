@@ -1,5 +1,5 @@
 oo-programming-java-part-II-Helsinki
 ====================================
 
-Exercises from the second part of the MOOC organized by the University of Helsinki
-http://mooc.cs.helsinki.fi/programming-part2/
+Solutions to the exercises from the second part of the MOOC organized by the University of Helsinki
+http://mooc.fi/courses/2013/programming-part-2/
